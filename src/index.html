@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="output.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  <title>Login Page</title>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    .show-password {
+      position: relative;
+    }
+    .show-password input {
+      padding-right: 2.5rem; /* Untuk memberikan ruang untuk ikon toggle */
+    }
+    .show-password .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 0.75rem;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #64748B; /* warna ikon */
+    }
+    .show-password .toggle-password i {
+      transition: color 0.2s;
+    }
+  </style>
+</head>
+<body class="font-sans bg-white min-h-screen flex flex-col md:flex-row">
+  <!-- Logo Section -->
+  <div class="w-full md:w-1/2 bg-red-900 flex items-center justify-center p-4">
+    <img src="logo-white.png" width="128" height="128" class="mr-2"/>
+  </div>
+  <!-- Login Form Section -->
+  <div class="w-full md:w-1/2 bg-white flex items-center justify-center p-4">
+    <div class="w-full max-w-md p-6 bg-white rounded-lg">
+      <h1 class="text-2xl font-bold mb-6 text-left text-neutral-900">Masuk Mitra Viat</h1>
+      <form action="dashboard.html" method="POST">
+        <div class="mb-4">
+          <label for="email" class="block text-neutral-500 text-sm font-semibold mb-2">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full px-3 py-2 border border-neutral-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" required>
+        </div>
+        <div class="mb-6 show-password">
+          <label for="password" class="block text-neutral-500 text-sm font-semibold mb-2">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" class="w-full px-3 py-2 border border-neutral-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" required>
+          <span class="toggle-password" onclick="togglePassword()">
+            <i id="toggleIcon" data-feather="eye-off"></i> <!-- Ikon awal "eye" -->
+          </span>
+          <a href="#" class="block text-red-500 text-sm mt-1 text-right">Lupa Password?</a>
+        </div>
+        <button type="submit" class="w-full bg-red-900 text-white py-2 px-4 rounded-lg hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-800">Login</button>
+      </form>
+      <br>
+      <br>
+      <p class="text-center text-neutral-400 text-sm">Atau Masuk Dengan</p>
+      <br>
+      <button class="border border-neutral-400 w-full bg-white font-semibold text-neutral-500 py-2 px-4 rounded-lg hover:bg-neutral-100 focus:outline-neutral-400 focus:ring-2 focus:ring-red-500 flex items-center justify-center">
+        <img src="https://img.icons8.com/fluency/48/google-logo.png" width="24" height="24" class="mr-2"/>
+        Google
+      </button>
+      <br>
+      <p class="text-center text-neutral-900 text-sm">Ingin membuat event? <a href="register.html" class="text-red-500 text-sm">Daftar disini</a></p>
+    </div>
+  </div>
+  <script>
+    // Initialize Feather Icons
+    feather.replace();
+  
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const toggleIcon = document.getElementById('toggleIcon'); // Akses langsung ikon dengan ID
+  
+      // Ubah tipe input antara 'password' dan 'text'
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleIcon.outerHTML = '<i id="toggleIcon" data-feather="eye"></i>'; // Ubah ke 'eye-off'
+      } else {
+        passwordField.type = 'password';
+        toggleIcon.outerHTML = '<i id="toggleIcon" data-feather="eye-off"></i>'; // Ubah ke 'eye'
+      }
+  
+      // Perbarui Feather Icons setelah perubahan
+      feather.replace();
+    }
+  </script>
+</body>
+</html>
