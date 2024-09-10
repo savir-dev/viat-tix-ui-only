@@ -18,53 +18,87 @@
     <script src="https://cdn.tiny.cloud/1/2bppe7lzl3ejbr8norc2ib5v8xllmenbc55pq94sfte8f7ny/tinymce/6/tinymce.min.js"></script>
   </head>
   <body class="font-sans bg-white min-h-screen flex">
-    <!-- Sidebar -->
-    <aside class="sidebar flex flex-col p-4">
-      <!-- Logo -->
-      <div class="sidebar-logo">
-        <img src="logo-red.png" alt="Logo" />
-      </div>
-      <!-- Menu -->
-      <div class="sidebar-menu">
-        <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">Menu</h2>
-        <a href="dashboard.html" class="active flex items-center">
-          <i data-feather="home" class="mr-2"></i>
-          Dashboard
-        </a>
-      </div>
+    <aside
+      class="sidebar bg-white text-red-800 flex flex-col justify-between min-h-screen p-4"
+    >
+      <!-- Top Section (Logo and Menu) -->
+      <div>
+        <!-- Logo -->
+        <div class="sidebar-logo">
+          <img src="logo-red.png" width="128" height="128" alt="Logo" />
+        </div>
 
-      <div class="sidebar-menu mt-6">
-        <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">
-          Management
-        </h2>
-        <a href="#" class="flex items-center">
-          <i data-feather="calendar" class="mr-2"></i>
-          Event
-        </a>
-        <!-- Collapsible Menu -->
-        <div class="collapsible-menu">
+        <!-- Menu Section -->
+        <div class="sidebar-menu">
+          <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">
+            Menu
+          </h2>
+          <a
+            href="dashboard.html"
+            class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
+          >
+            <i data-feather="home" class="mr-2 text-red"></i>
+            Dashboard
+          </a>
+        </div>
+
+        <!-- Management Section -->
+        <div class="sidebar-menu mt-6">
+          <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">
+            Management
+          </h2>
           <a
             href="#"
-            onclick="toggleSubmenu(event, 'transaksiSubmenu')"
-            class="flex items-center"
+            class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg active"
           >
-            <i data-feather="clipboard" class="mr-2"></i>
-            Transaksi
-            <i data-feather="chevron-down" class="ml-auto"></i>
+            <i data-feather="calendar" class="mr-2 text-red"></i>
+            Event
           </a>
-          <div id="transaksiSubmenu" class="submenu">
-            <a href="#" class="block">Laporan Penjualan</a>
-            <a href="#" class="block">Penarikan Dana</a>
-            <a href="#" class="block">Data Pemesan</a>
-            <a href="#" class="block">Check-In</a>
+          <!-- Transaksi Menu with Collapsible Submenu -->
+          <div class="collapsible-menu">
+            <a
+              href="#"
+              class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
+              onclick="toggleSubmenu(event, 'transaksiSubmenu')"
+            >
+              <i data-feather="clipboard" class="mr-2 text-red"></i>
+              Transaksi
+              <i data-feather="chevron-down" class="ml-auto"></i>
+              <!-- Icon for collapse -->
+            </a>
+            <div id="transaksiSubmenu" class="ml-6 hidden">
+              <a
+                href="#"
+                class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+                >Laporan Penjualan</a
+              >
+              <a
+                href="#"
+                class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+                >Penarikan Dana</a
+              >
+              <a
+                href="#"
+                class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+                >Data Pemesan</a
+              >
+              <a
+                href="#"
+                class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+                >Check-In</a
+              >
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Logout -->
-      <div class="mt-auto">
-        <a href="#" class="flex items-center">
-          <i data-feather="log-out" class="mr-2"></i>
+      <!-- Bottom Section (Logout) -->
+      <div>
+        <a
+          href="#"
+          class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
+        >
+          <i data-feather="log-out" class="mr-2 text-red"></i>
           Logout
         </a>
       </div>

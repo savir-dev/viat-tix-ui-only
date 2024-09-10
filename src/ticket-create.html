@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
       rel="stylesheet"
     />
-    <title>Event Detail</title>
+    <title>Event</title>
     <script src="scripts.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
@@ -112,7 +112,7 @@
 
       <!-- Topbar -->
       <div class="topbar flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">Nama Event</h1>
+        <h1 class="text-2xl font-bold">Create Ticket</h1>
         <div class="dropdown relative">
           <button class="flex items-center">
             <i data-feather="user" class="mr-2"></i>
@@ -132,78 +132,81 @@
         <span class="mx-2">/</span>
         <a href="#" class="text-red hover:underline">Event</a>
         <span class="mx-2">/</span>
-        <span>Detail Event</span>
+        <a href="#" class="text-red hover:underline">Detail Event</a>
+        <span class="mx-2">/</span>
+        <span>Create Ticket</span>
       </nav>
-
-      <!-- Event Detail Section -->
-      <div class="event-cover flex mb-6">
-        <img
-          src="https://idebiz.id/wp-content/uploads/2024/03/Strategi-Sukses-Mengelola-Acara-Besar-Peran-Event-Organizer.jpg"
-          alt="Event Cover"
-        />
-        <div class="event-detail">
-          <h2 class="text-xl font-semibold mb-4">Detail Event</h2>
-          <ul class="event-list">
-            <li>
-              <i data-feather="calendar"></i>
-              <span> Januari 1, 2024 10:00 AM</span>
-              <i data-feather="map-pin" class="ml-4"></i>
-              <span> 123 Event Street, City, Country</span>
-            </li>
-            <li>
-              <i data-feather="calendar"></i>
-              <span> Februari 14, 2024 02:00 PM</span>
-              <i data-feather="map-pin" class="ml-4"></i>
-              <span> 456 Another Ave, City, Country</span>
-            </li>
-          </ul>
-          <br />
-          <h2 class="text-xl font-semibold mb-4">Informasi Tambahan</h2>
-          <div class="social-link mb-4">
-            <a href="https://instagram.com" target="_blank" class="text-red">
-              <i data-feather="instagram" class="mr-2"></i>
-            </a>
+      <!-- Form Container -->
+      <div class="max-w-2xl bg-white p-6 rounded-lg">
+        <h2 class="text-xl font-bold text-red-800 mb-6">Detail Ticket</h2>
+        <form action="#" method="POST">
+          <div class="mb-4">
+            <label
+              for="ticketName"
+              class="block text-sm font-medium text-gray-700"
+              >Nama Ticket</label
+            >
+            <input
+              type="text"
+              id="ticketName"
+              name="ticketName"
+              class="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            />
           </div>
-          <button
-            class="btn-border border-t-neutral-100 text-red border-red-600"
-          >
-            Lihat Detail
-          </button>
-        </div>
+          <div class="mb-4">
+            <label for="price" class="block text-sm font-medium text-gray-700"
+              >Harga</label
+            >
+            <input
+              type="number"
+              id="price"
+              name="price"
+              class="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="validDate"
+              class="block text-sm font-medium text-gray-700"
+              >Tanggal Berlaku</label
+            >
+            <select
+              id="validDate"
+              name="validDate"
+              class="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            >
+              <option value="" disabled selected>Pilih tanggal</option>
+              <!-- Add date options here -->
+            </select>
+          </div>
+          <div class="mb-4">
+            <label
+              for="quantity"
+              class="block text-sm font-medium text-gray-700"
+              >Jumlah Ticket (Kuota)</label
+            >
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              class="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 text-gray-900 focus:ring-red-500 focus:border-red-500 sm:text-sm"
+            />
+          </div>
+          <div class="flex gap-4">
+            <button
+              type="submit"
+              class="w-40 bg-red-800 text-white py-2 px-4 rounded-lg font-bold hover:bg-red-700"
+            >
+              Simpan
+            </button>
+            <a
+              href="#"
+              class="w-40 border border-red-800 text-red-800 py-2 px-4 rounded-lg font-bold text-center flex items-center justify-center hover:bg-red-100"
+              >Batal</a
+            >
+          </div>
+        </form>
       </div>
-
-      <!-- Action Buttons -->
-      <div class="flex mb-6">
-        <button class="btn btn-red text-white mr-4">Buat Tiket</button>
-      </div>
-
-      <!-- Data Table -->
-      <table>
-        <thead>
-          <tr>
-            <th>Nama Tiket</th>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>VIP Ticket</td>
-            <td>Rp 500.000</td>
-            <td>50</td>
-            <td class="action-buttons">
-              <button>
-                <i data-feather="edit"></i>
-              </button>
-              <button>
-                <i data-feather="trash-2"></i>
-              </button>
-            </td>
-          </tr>
-          <!-- Repeat rows as needed -->
-        </tbody>
-      </table>
     </div>
 
     <script>
@@ -223,13 +226,6 @@
         const submenu = document.getElementById(submenuId);
         submenu.classList.toggle("hidden");
       }
-
-      // Close alert
-      document
-        .getElementById("closeAlert")
-        .addEventListener("click", function () {
-          document.getElementById("alert").style.display = "none";
-        });
     </script>
   </body>
 </html>

@@ -16,7 +16,6 @@
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body class="font-sans bg-white min-h-screen flex">
-    <!-- Sidebar -->
     <aside
       class="sidebar bg-white text-red-800 flex flex-col justify-between min-h-screen p-4"
     >
@@ -135,75 +134,71 @@
         <span>Detail Event</span>
       </nav>
 
-      <!-- Event Detail Section -->
-      <div class="event-cover flex mb-6">
-        <img
-          src="https://idebiz.id/wp-content/uploads/2024/03/Strategi-Sukses-Mengelola-Acara-Besar-Peran-Event-Organizer.jpg"
-          alt="Event Cover"
-        />
-        <div class="event-detail">
-          <h2 class="text-xl font-semibold mb-4">Detail Event</h2>
-          <ul class="event-list">
-            <li>
-              <i data-feather="calendar"></i>
-              <span> Januari 1, 2024 10:00 AM</span>
-              <i data-feather="map-pin" class="ml-4"></i>
-              <span> 123 Event Street, City, Country</span>
-            </li>
-            <li>
-              <i data-feather="calendar"></i>
-              <span> Februari 14, 2024 02:00 PM</span>
-              <i data-feather="map-pin" class="ml-4"></i>
-              <span> 456 Another Ave, City, Country</span>
-            </li>
-          </ul>
-          <br />
-          <h2 class="text-xl font-semibold mb-4">Informasi Tambahan</h2>
-          <div class="social-link mb-4">
-            <a href="https://instagram.com" target="_blank" class="text-red">
-              <i data-feather="instagram" class="mr-2"></i>
-            </a>
-          </div>
-          <button
-            class="btn-border border-t-neutral-100 text-red border-red-600"
-          >
-            Lihat Detail
-          </button>
+      <a href="#" class="border-button float-end mb-4">
+        <i data-feather="arrow-left"></i>
+        Kembali
+      </a>
+      <div class="container mt-8">
+        <!-- Kolom 1 -->
+        <div class="col ml-r">
+            <h2 class="text-2xl text-red font-bold mb-4">Detail Event</h2>
+            <img src="https://idebiz.id/wp-content/uploads/2024/03/Strategi-Sukses-Mengelola-Acara-Besar-Peran-Event-Organizer.jpg" alt="Event Cover" class="event-img" />
+
+            <ul class="event-list">
+                <li>
+                  <i data-feather="calendar"></i>
+                  <span> Januari 1, 2024 10:00 AM</span>
+                  <i data-feather="map-pin" class="ml-4"></i>
+                  <span> 123 Event Street, City, Country</span>
+                </li>
+                <li>
+                  <i data-feather="calendar"></i>
+                  <span> Februari 14, 2024 02:00 PM</span>
+                  <i data-feather="map-pin" class="ml-4"></i>
+                  <span> 456 Another Ave, City, Country</span>
+                </li>
+              </ul>
+
+            <h3 class="text-xl font-semibold mt-6 mb-2">Deskripsi</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <h3 class="text-xl font-semibold mt-6 mb-2">Syarat & Ketentuan</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
-      </div>
 
-      <!-- Action Buttons -->
-      <div class="flex mb-6">
-        <button class="btn btn-red text-white mr-4">Buat Tiket</button>
-      </div>
+        <!-- Kolom 2 -->
+        <div class="col ml-2">
+            <h3 class="text-xl font-semibold mb-4">List Talent</h3>
+            <div class="talent-list">
+                <div>
+                    <img src="https://i.pinimg.com/originals/83/72/3b/83723b4943955e2d191b50a582d743f2.png" alt="Talent 1" />
+                    <p class="text-center"><a href="https://instagram.com/talent1" target="_blank">Talent 1</a></p>
+                </div>
+                <div>
+                    <img src="https://i.pinimg.com/originals/83/72/3b/83723b4943955e2d191b50a582d743f2.png" alt="Talent 2" />
+                    <p class="text-center"><a href="https://instagram.com/talent2" target="_blank">Talent 2</a></p>
+                </div>
+                <!-- Add more talents as needed -->
+            </div>
 
-      <!-- Data Table -->
-      <table>
-        <thead>
-          <tr>
-            <th>Nama Tiket</th>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>VIP Ticket</td>
-            <td>Rp 500.000</td>
-            <td>50</td>
-            <td class="action-buttons">
-              <button>
-                <i data-feather="edit"></i>
-              </button>
-              <button>
-                <i data-feather="trash-2"></i>
-              </button>
-            </td>
-          </tr>
-          <!-- Repeat rows as needed -->
-        </tbody>
-      </table>
+            <h3 class="text-xl font-semibold mt-6 mb-2">List Fasilitas</h3>
+            <ul class="facility-list">
+                <li><i data-feather="user"></i> Toilet</li>
+                <li><i data-feather="coffee"></i> Food Court</li>
+                <li><i data-feather="truck"></i> Parkir Area</li>
+                <!-- Add more facilities as needed -->
+            </ul>
+            
+
+            <div class="col mt-6">
+                <h3 class="text-xl font-semibold mb-2">Informasi Tambahan</h3>
+                <div class="social-link mb-4">
+                    <a href="https://instagram.com" target="_blank" class="text-red">
+                      <i data-feather="instagram" class="mr-2"></i>
+                    </a>
+                  </div>
+            </div>
+        </div>
     </div>
 
     <script>
