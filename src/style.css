@@ -94,6 +94,15 @@
     transform: translateX(0); /* Menampilkan sidebar */
   }
 
+  .sidebar.open #closeSidebar {
+    display: block;
+  }
+
+  /* Sembunyikan menu toggle di luar sidebar saat sidebar terbuka */
+  .sidebar.open #sidebarToggle {
+    display: none;
+  }
+
   .main-content {
     margin-left: 0; /* Mengatur margin konten utama */
   }
@@ -108,12 +117,40 @@
     top: 100%;
     width: 200px; /* Lebar dropdown menu */
   }
-}
+  /* Overlay untuk sidebar saat terbuka */
+  #sidebarOverlay {
+    display: none;
+    z-index: 5; /* Agar overlay berada di bawah sidebar */
+  }
 
-/* Responsif Dashboard Cards */
-@media (max-width: 768px) {
-  .grid-cols-1 {
-    grid-template-columns: repeat(1, 1fr); /* Satu kolom pada perangkat kecil */
+  /* Tampilkan overlay saat sidebar terbuka */
+  .sidebar.open + #sidebarOverlay {
+    display: block;
+  }
+
+  /* Default tampilkan icon menu */
+  .icon-close {
+    display: none;
+  }
+
+  /* Tampilkan icon X saat sidebar terbuka */
+  .sidebar.open + .icon-close {
+    display: block;
+  }
+
+  /* Sembunyikan icon menu saat sidebar terbuka */
+  .sidebar.open + .icon-menu {
+    display: none;
+  }
+
+  /* Responsif Dashboard Cards */
+  @media (max-width: 768px) {
+    .grid-cols-1 {
+      grid-template-columns: repeat(
+        1,
+        1fr
+      ); /* Satu kolom pada perangkat kecil */
+    }
   }
 }
 

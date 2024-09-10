@@ -21,6 +21,10 @@
     <aside
       class="sidebar bg-white text-red-800 flex flex-col justify-between min-h-screen p-4"
     >
+      <!-- Tombol Close (X) -->
+      <button id="closeSidebar" class="text-red-800 self-end hidden">
+        <i data-feather="x"></i>
+      </button>
       <!-- Top Section (Logo and Menu) -->
       <div>
         <!-- Logo -->
@@ -411,11 +415,20 @@
         document.getElementById(submenuId).classList.toggle("hidden");
       }
 
-      // Sidebar Toggle Function
+      // Sidebar toggle (untuk membuka sidebar)
       document
         .getElementById("sidebarToggle")
         .addEventListener("click", function () {
-          document.querySelector(".sidebar").classList.toggle("open");
+          const sidebar = document.querySelector(".sidebar");
+          sidebar.classList.toggle("open");
+        });
+
+      // Tombol close (X) di dalam sidebar (untuk menutup sidebar)
+      document
+        .getElementById("closeSidebar")
+        .addEventListener("click", function () {
+          const sidebar = document.querySelector(".sidebar");
+          sidebar.classList.remove("open"); // Tutup sidebar
         });
 
       // Stepper Logic
