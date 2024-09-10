@@ -1,0 +1,84 @@
+<!-- Sidebar -->
+<aside
+  class="sidebar bg-white text-red-800 flex flex-col justify-between min-h-screen p-4"
+>
+  <!-- Top Section (Logo and Menu) -->
+  <div>
+    <!-- Logo -->
+    <div class="sidebar-logo">
+      <img src="logo-red.png" width="128" height="128" alt="Logo" />
+    </div>
+
+    <!-- Menu Section -->
+    <div class="sidebar-menu">
+      <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">Menu</h2>
+      <a
+        href="dashboard.html"
+        class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg active"
+      >
+        <i data-feather="home" class="mr-2 text-red"></i>
+        Dashboard
+      </a>
+    </div>
+
+    <!-- Management Section -->
+    <div class="sidebar-menu mt-6">
+      <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">
+        Management
+      </h2>
+      <a
+        href="#"
+        class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
+      >
+        <i data-feather="calendar" class="mr-2 text-red"></i>
+        Event
+      </a>
+      <!-- Transaksi Menu with Collapsible Submenu -->
+      <div class="collapsible-menu">
+        <a
+          href="#"
+          class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
+          onclick="toggleSubmenu(event, 'transaksiSubmenu')"
+        >
+          <i data-feather="clipboard" class="mr-2 text-red"></i>
+          Transaksi
+          <i data-feather="chevron-down" class="ml-auto"></i>
+          <!-- Icon for collapse -->
+        </a>
+        <div id="transaksiSubmenu" class="ml-6 hidden">
+          <a
+            href="#"
+            class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+            >Laporan Penjualan</a
+          >
+          <a
+            href="#"
+            class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+            >Penarikan Dana</a
+          >
+          <a
+            href="#"
+            class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+            >Data Pemesan</a
+          >
+          <a
+            href="#"
+            class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
+            >Check-In</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section (Logout) -->
+  <div>
+    <a
+      href="#"
+      class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
+    >
+      <i data-feather="log-out" class="mr-2 text-red"></i>
+      Logout
+    </a>
+  </div>
+</aside>

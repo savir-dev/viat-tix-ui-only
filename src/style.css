@@ -1,0 +1,793 @@
+.topbar {
+  margin: 2rem 0; /* Margin atas dan bawah seperti pada logo */
+}
+
+.sidebar {
+  min-width: 300px; /* Lebar sidebar lebih lebar */
+  border-right: 2px solid #e5e7eb; /* Garis pemisah di samping kanan sidebar */
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0; /* Margin atas dan bawah */
+}
+
+.sidebar-logo img {
+  width: 100px; /* Ukuran logo */
+  height: auto; /* Menjaga proporsi logo */
+  margin: 1rem 0; /* Margin tambahan untuk atas dan bawah */
+}
+
+.sidebar-menu {
+  margin-top: 2rem;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem; /* Ruang lebih besar di samping */
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.sidebar-menu a:hover {
+  background-color: #f3f4f6; /* neutral-300 */
+}
+
+.sidebar-menu a svg {
+  margin-right: 1rem; /* Jarak antara ikon dan teks menu */
+}
+
+.sidebar-menu a.active {
+  background-color: #f3f4f6; /* Neutral-100 */
+  color: #94181c; /* Red */
+  font-weight: 800;
+}
+
+.sidebar-menu a.active i {
+  color: #94181c; /* Red for active icon */
+  font-weight: 800;
+}
+
+.collapsible-menu {
+  margin-top: 1rem;
+}
+
+.collapsible-menu .submenu a {
+  padding-left: 2rem; /* Space for sub-menu items */
+}
+
+.collapsible-menu .submenu {
+  display: none;
+}
+
+.collapsible-menu.active .submenu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none; /* Menyembunyikan menu dropdown secara default */
+  z-index: 9999;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Menampilkan dropdown saat hover */
+}
+
+/* Responsif Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    min-width: 100%; /* Sidebar penuh lebar pada perangkat kecil */
+    border-right: none; /* Hilangkan garis pemisah pada perangkat kecil */
+    position: fixed; /* Posisi tetap */
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10; /* Agar sidebar berada di atas konten lainnya */
+    transition: transform 0.3s ease; /* Transisi animasi saat sidebar muncul atau menghilang */
+    transform: translateX(-100%); /* Menyembunyikan sidebar di luar layar */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Menampilkan sidebar */
+  }
+
+  .main-content {
+    margin-left: 0; /* Mengatur margin konten utama */
+  }
+
+  .topbar {
+    margin: 1rem 0; /* Sesuaikan margin topbar pada perangkat kecil */
+  }
+
+  .topbar .dropdown-menu {
+    position: absolute; /* Posisi dropdown menu */
+    right: 0;
+    top: 100%;
+    width: 200px; /* Lebar dropdown menu */
+  }
+}
+
+/* Responsif Dashboard Cards */
+@media (max-width: 768px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr); /* Satu kolom pada perangkat kecil */
+  }
+}
+
+/* Responsif DataTable */
+@media (max-width: 768px) {
+  table {
+    width: 100%; /* Memastikan tabel menggunakan lebar penuh */
+    display: block;
+    overflow-x: auto; /* Membuat tabel scrollable secara horizontal */
+    white-space: nowrap;
+  }
+
+  thead {
+    display: none; /* Menyembunyikan header tabel untuk tampilan kecil */
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem; /* Menambah jarak antara baris tabel */
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    padding-left: 50%; /* Menambah padding kiri pada sel */
+    position: relative;
+  }
+
+  tbody td::before {
+    content: attr(data-label); /* Menambahkan label sebelum isi sel */
+    position: absolute;
+    left: 0;
+    width: 45%; /* Lebar label */
+    padding-left: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
+
+/* General Styles */
+.hidden {
+  display: none;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  min-width: 300px;
+  border-right: 2px solid #e5e7eb;
+  background-color: #fff;
+}
+.sidebar-logo img {
+  width: 100px;
+  margin: 1rem auto;
+  display: block;
+}
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  color: #0f172a;
+}
+.sidebar-menu a:hover {
+  background-color: #f3f4f6;
+}
+.sidebar-menu a.active {
+  background-color: #f3f4f6;
+  color: #94181c;
+  font-weight: 800;
+}
+
+/* Collapsible Menu */
+.collapsible-menu .submenu {
+  display: none;
+  padding-left: 1.5rem;
+}
+.collapsible-menu.active .submenu {
+  display: block;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Responsif Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    min-width: 100%; /* Sidebar penuh lebar pada perangkat kecil */
+    border-right: none; /* Hilangkan garis pemisah pada perangkat kecil */
+    position: fixed; /* Posisi tetap */
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10; /* Agar sidebar berada di atas konten lainnya */
+    transition: transform 0.3s ease; /* Transisi animasi saat sidebar muncul atau menghilang */
+    transform: translateX(-100%); /* Menyembunyikan sidebar di luar layar */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Menampilkan sidebar */
+  }
+
+  .main-content {
+    margin-left: 0; /* Mengatur margin konten utama */
+  }
+
+  .topbar {
+    margin: 1rem 0; /* Sesuaikan margin topbar pada perangkat kecil */
+  }
+
+  .topbar .dropdown-menu {
+    position: absolute; /* Posisi dropdown menu */
+    right: 0;
+    top: 100%;
+    width: 200px; /* Lebar dropdown menu */
+  }
+}
+
+/* Responsif Dashboard Cards */
+@media (max-width: 768px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr); /* Satu kolom pada perangkat kecil */
+  }
+}
+
+/* Responsif DataTable */
+@media (max-width: 768px) {
+  table {
+    width: 100%; /* Memastikan tabel menggunakan lebar penuh */
+    display: block;
+    overflow-x: auto; /* Membuat tabel scrollable secara horizontal */
+    white-space: nowrap;
+  }
+
+  thead {
+    display: none; /* Menyembunyikan header tabel untuk tampilan kecil */
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem; /* Menambah jarak antara baris tabel */
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    padding-left: 50%; /* Menambah padding kiri pada sel */
+    position: relative;
+  }
+
+  tbody td::before {
+    content: attr(data-label); /* Menambahkan label sebelum isi sel */
+    position: absolute;
+    left: 0;
+    width: 45%; /* Lebar label */
+    padding-left: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
+
+/* Stepper Styles */
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 16%;
+  margin-right: 16%;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.stepper::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  right: 50px;
+  height: 2px;
+  background-color: #e5e7eb;
+  z-index: -1;
+}
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.step .circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.step.active .circle {
+  background-color: #94181c;
+  color: white;
+}
+.step .label {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+.step.active .label {
+  font-weight: bold;
+  color: #0f172a;
+}
+
+/* Form Styles */
+.form-step {
+  display: none;
+}
+.form-step.active {
+  display: block;
+}
+
+/* Buttons */
+.btn {
+  background-color: #94181c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn:hover {
+  background-color: #7a0d0e;
+}
+
+/* Button Styles */
+.remove-schedule {
+  display: flex;
+  align-items: center;
+  background: none; /* Remove background */
+  color: #94181c; /* Red color for text and icon */
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: color 0.3s ease; /* Change transition to color */
+}
+
+.remove-schedule i {
+  margin-right: 0.5rem;
+}
+
+.remove-schedule:hover {
+  color: #7a0d0e; /* Darker red for hover effect */
+}
+
+.remove-schedule.hidden {
+  display: none;
+}
+
+/* Form Layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* General Styles */
+.hidden {
+  display: none;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  min-width: 300px;
+  border-right: 2px solid #e5e7eb;
+  background-color: #fff;
+}
+.sidebar-logo img {
+  width: 100px;
+  margin: 1rem auto;
+  display: block;
+}
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  color: #0f172a;
+}
+.sidebar-menu a:hover {
+  background-color: #f3f4f6;
+}
+.sidebar-menu a.active {
+  background-color: #f3f4f6;
+  color: #94181c;
+  font-weight: 800;
+}
+
+/* Collapsible Menu */
+.collapsible-menu .submenu {
+  display: none;
+  padding-left: 1.5rem;
+}
+.collapsible-menu.active .submenu {
+  display: block;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Responsif Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    min-width: 100%; /* Sidebar penuh lebar pada perangkat kecil */
+    border-right: none; /* Hilangkan garis pemisah pada perangkat kecil */
+    position: fixed; /* Posisi tetap */
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10; /* Agar sidebar berada di atas konten lainnya */
+    transition: transform 0.3s ease; /* Transisi animasi saat sidebar muncul atau menghilang */
+    transform: translateX(-100%); /* Menyembunyikan sidebar di luar layar */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Menampilkan sidebar */
+  }
+
+  .main-content {
+    margin-left: 0; /* Mengatur margin konten utama */
+  }
+
+  .topbar {
+    margin: 1rem 0; /* Sesuaikan margin topbar pada perangkat kecil */
+  }
+
+  .topbar .dropdown-menu {
+    position: absolute; /* Posisi dropdown menu */
+    right: 0;
+    top: 100%;
+    width: 200px; /* Lebar dropdown menu */
+  }
+}
+
+/* Responsif Dashboard Cards */
+@media (max-width: 768px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr); /* Satu kolom pada perangkat kecil */
+  }
+}
+
+/* Responsif DataTable */
+@media (max-width: 768px) {
+  table {
+    width: 100%; /* Memastikan tabel menggunakan lebar penuh */
+    display: block;
+    overflow-x: auto; /* Membuat tabel scrollable secara horizontal */
+    white-space: nowrap;
+  }
+
+  thead {
+    display: none; /* Menyembunyikan header tabel untuk tampilan kecil */
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem; /* Menambah jarak antara baris tabel */
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    padding-left: 50%; /* Menambah padding kiri pada sel */
+    position: relative;
+  }
+
+  tbody td::before {
+    content: attr(data-label); /* Menambahkan label sebelum isi sel */
+    position: absolute;
+    left: 0;
+    width: 45%; /* Lebar label */
+    padding-left: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
+
+/* Tab Styles */
+.tabs {
+  border-bottom: 2px solid #e5e7eb;
+  display: flex;
+}
+.tab {
+  padding: 1rem;
+  cursor: pointer;
+}
+.tab.active {
+  border-bottom: 2px solid #94181c;
+  color: #94181c;
+  font-weight: bold;
+}
+
+/* Event Detail Styles */
+.event-cover {
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+.event-cover img {
+  width: 55%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.event-detail {
+  width: 45%;
+  padding-left: 1rem;
+}
+.event-detail h2 {
+  margin-bottom: 1rem;
+}
+.event-detail .social-link {
+  margin-bottom: 1rem;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+th {
+  background-color: #f3f4f6;
+}
+.action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94181c;
+}
+.action-buttons button i {
+  font-size: 1rem;
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.btn-border {
+  color: #94181c;
+  border: 2px solid #94181c;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+.btn-border:hover {
+  background-color: #94181b;
+  color: #fff;
+}
+.btn-border:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(148, 24, 28, 0.5);
+}
+.btn-red {
+  background-color: #94181c;
+}
+.btn-red:hover {
+  background-color: #7a1417;
+}
+.btn-red:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(148, 24, 28, 0.5);
+}
+
+/* Custom styles */
+.event-list {
+  list-style: none;
+  padding: 8px;
+}
+.event-list li {
+  display: flex;
+  align-items: left;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+.event-list li i {
+  margin-right: 0.5rem;
+  color: #94181c; /* Red color for icons */
+}
+
+/* General Styles */
+.hidden {
+  display: none;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  min-width: 300px;
+  border-right: 2px solid #e5e7eb;
+  background-color: #fff;
+}
+.sidebar-logo img {
+  width: 100px;
+  margin: 1rem auto;
+  display: block;
+}
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  color: #0f172a;
+}
+.sidebar-menu a:hover {
+  background-color: #f3f4f6;
+}
+.sidebar-menu a.active {
+  background-color: #f3f4f6;
+  color: #94181c;
+  font-weight: 800;
+}
+
+/* Collapsible Menu */
+.collapsible-menu .submenu {
+  display: none;
+  padding-left: 1.5rem;
+}
+.collapsible-menu.active .submenu {
+  display: block;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Responsif Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    min-width: 100%; /* Sidebar penuh lebar pada perangkat kecil */
+    border-right: none; /* Hilangkan garis pemisah pada perangkat kecil */
+    position: fixed; /* Posisi tetap */
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10; /* Agar sidebar berada di atas konten lainnya */
+    transition: transform 0.3s ease; /* Transisi animasi saat sidebar muncul atau menghilang */
+    transform: translateX(-100%); /* Menyembunyikan sidebar di luar layar */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Menampilkan sidebar */
+  }
+
+  .main-content {
+    margin-left: 0; /* Mengatur margin konten utama */
+  }
+
+  .topbar {
+    margin: 1rem 0; /* Sesuaikan margin topbar pada perangkat kecil */
+  }
+
+  .topbar .dropdown-menu {
+    position: absolute; /* Posisi dropdown menu */
+    right: 0;
+    top: 100%;
+    width: 200px; /* Lebar dropdown menu */
+  }
+}
+
+/* Responsif Dashboard Cards */
+@media (max-width: 768px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr); /* Satu kolom pada perangkat kecil */
+  }
+}
+
+/* Responsif DataTable */
+@media (max-width: 768px) {
+  table {
+    width: 100%; /* Memastikan tabel menggunakan lebar penuh */
+    display: block;
+    overflow-x: auto; /* Membuat tabel scrollable secara horizontal */
+    white-space: nowrap;
+  }
+
+  thead {
+    display: none; /* Menyembunyikan header tabel untuk tampilan kecil */
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 1rem; /* Menambah jarak antara baris tabel */
+  }
+
+  tbody td {
+    display: block;
+    text-align: right;
+    padding-left: 50%; /* Menambah padding kiri pada sel */
+    position: relative;
+  }
+
+  tbody td::before {
+    content: attr(data-label); /* Menambahkan label sebelum isi sel */
+    position: absolute;
+    left: 0;
+    width: 45%; /* Lebar label */
+    padding-left: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
+
+.show-password {
+  position: relative;
+}
+.show-password input {
+  padding-right: 2.5rem; /* Untuk memberikan ruang untuk ikon toggle */
+}
+.show-password .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #64748b; /* warna ikon */
+}
+.show-password .toggle-password i {
+  transition: color 0.2s;
+}
