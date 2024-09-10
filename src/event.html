@@ -1,418 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="output.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-    rel="stylesheet"
-  />
-  <title>Dashboard</title>
-  <script src="https://unpkg.com/feather-icons"></script>
-  <style>
-    .topbar {
-      margin: 2rem 0; /* Margin atas dan bawah seperti pada logo */
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Event</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      /* General Styles */
+      .hidden {
+        display: none;
+      }
 
-    .sidebar {
-      min-width: 300px; /* Lebar sidebar lebih lebar */
-      border-right: 2px solid #e5e7eb; /* Garis pemisah di samping kanan sidebar */
-    }
-
-    .sidebar-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0.5rem 0; /* Margin atas dan bawah */
-    }
-
-    .sidebar-logo img {
-      width: 100px; /* Ukuran logo */
-      height: auto; /* Menjaga proporsi logo */
-      margin: 1rem 0; /* Margin tambahan untuk atas dan bawah */
-    }
-
-    .sidebar-menu {
-      margin-top: 2rem;
-    }
-
-    .sidebar-menu a {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem 1.5rem; /* Ruang lebih besar di samping */
-      text-decoration: none;
-      border-radius: 0.5rem;
-    }
-
-    .sidebar-menu a:hover {
-      background-color: #f3f4f6; /* neutral-300 */
-    }
-
-    .sidebar-menu a.active {
-      background-color: #f3f4f6; /* Neutral-100 */
-      color: #94181c; /* Red */
-      font-weight: 800;
-    }
-
-    .sidebar-menu a.active i {
-      color: #94181c; /* Red for active icon */
-      font-weight: 800;
-    }
-
-    .collapsible-menu {
-      margin-top: 1rem;
-    }
-
-    .collapsible-menu .submenu a {
-      padding-left: 2rem; /* Space for sub-menu items */
-    }
-
-    .collapsible-menu .submenu {
-      display: none;
-    }
-
-    .collapsible-menu.active .submenu {
-      display: block;
-    }
-
-    .dropdown-menu {
-      display: none; /* Menyembunyikan menu dropdown secara default */
-      z-index: 9999;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block; /* Menampilkan dropdown saat hover */
-    }
-
-    /* Responsif Sidebar */
-    @media (max-width: 768px) {
+      /* Sidebar Styles */
       .sidebar {
-        min-width: 100%; /* Sidebar penuh lebar pada perangkat kecil */
-        border-right: none; /* Hilangkan garis pemisah pada perangkat kecil */
-        position: fixed; /* Posisi tetap */
-        top: 0;
-        left: 0;
-        height: 100%;
-        z-index: 10; /* Agar sidebar berada di atas konten lainnya */
-        transition: transform 0.3s ease; /* Transisi animasi saat sidebar muncul atau menghilang */
-        transform: translateX(-100%); /* Menyembunyikan sidebar di luar layar */
+        min-width: 300px;
+        border-right: 2px solid #e5e7eb;
+        background-color: #fff;
       }
-
-      .sidebar.open {
-        transform: translateX(0); /* Menampilkan sidebar */
-      }
-
-      .main-content {
-        margin-left: 0; /* Mengatur margin konten utama */
-      }
-
-      .topbar {
-        margin: 1rem 0; /* Sesuaikan margin topbar pada perangkat kecil */
-      }
-
-      .topbar .dropdown-menu {
-        position: absolute; /* Posisi dropdown menu */
-        right: 0;
-        top: 100%;
-        width: 200px; /* Lebar dropdown menu */
-      }
-    }
-
-    /* Responsif Dashboard Cards */
-    @media (max-width: 768px) {
-      .grid-cols-1 {
-        grid-template-columns: repeat(1, 1fr); /* Satu kolom pada perangkat kecil */
-      }
-    }
-
-    /* Responsif DataTable */
-    @media (max-width: 768px) {
-      table {
-        width: 100%; /* Memastikan tabel menggunakan lebar penuh */
+      .sidebar-logo img {
+        width: 100px;
+        margin: 1rem auto;
         display: block;
-        overflow-x: auto; /* Membuat tabel scrollable secara horizontal */
-        white-space: nowrap;
+      }
+      .sidebar-menu a {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        color: #0f172a;
+      }
+      .sidebar-menu a:hover {
+        background-color: #f3f4f6;
+      }
+      .sidebar-menu a.active {
+        background-color: #f3f4f6;
+        color: #94181c;
+        font-weight: 800;
       }
 
-      thead {
-        display: none; /* Menyembunyikan header tabel untuk tampilan kecil */
+      /* Collapsible Menu */
+      .collapsible-menu .submenu {
+        display: none;
+        padding-left: 1.5rem;
       }
-
-      tbody tr {
+      .collapsible-menu.active .submenu {
         display: block;
-        margin-bottom: 1rem; /* Menambah jarak antara baris tabel */
       }
 
-      tbody td {
-        display: block;
-        text-align: right;
-        padding-left: 50%; /* Menambah padding kiri pada sel */
-        position: relative;
-      }
-
-      tbody td::before {
-        content: attr(data-label); /* Menambahkan label sebelum isi sel */
+      /* Dropdown */
+      .dropdown-menu {
+        display: none;
         position: absolute;
-        left: 0;
-        width: 45%; /* Lebar label */
-        padding-left: 10px;
-        font-weight: bold;
-        white-space: nowrap;
+        right: 0;
+        margin-top: 0.5rem;
+        background-color: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       }
-    }
-  </style>
-</head>
-<body class="font-sans bg-white min-h-screen flex">
-  <!-- Sidebar -->
-  <aside class="sidebar bg-white text-red-800 flex flex-col justify-between min-h-screen p-4">
-    <!-- Top Section (Logo and Menu) -->
-    <div>
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Responsive Sidebar */
+      @media (max-width: 768px) {
+        .sidebar {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.3s ease;
+        }
+        .sidebar.open {
+          transform: translateX(0);
+        }
+        .main-content {
+          margin-left: 0;
+        }
+      }
+
+      /* Tab Styles */
+      .tabs {
+        border-bottom: 2px solid #e5e7eb;
+        display: flex;
+      }
+      .tab {
+        padding: 1rem;
+        cursor: pointer;
+      }
+      .tab.active {
+        border-bottom: 2px solid #94181c;
+        color: #94181c;
+        font-weight: bold;
+      }
+
+      /* Responsive DataTable */
+      @media (max-width: 768px) {
+        table {
+          display: block;
+          overflow-x: auto;
+        }
+        thead {
+          display: none;
+        }
+        tbody tr {
+          display: block;
+          margin-bottom: 1rem;
+        }
+        tbody td {
+          display: block;
+          text-align: right;
+          padding-left: 50%;
+          position: relative;
+        }
+        tbody td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 45%;
+          font-weight: bold;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans bg-white min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="sidebar flex flex-col p-4">
       <!-- Logo -->
       <div class="sidebar-logo">
-        <img src="logo-red.png" width="128" height="128" alt="Logo" />
+        <img src="logo-red.png" alt="Logo" />
       </div>
-
-      <!-- Menu Section -->
+      <!-- Menu -->
       <div class="sidebar-menu">
         <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">Menu</h2>
-        <a
-          href="dashboard.html"
-          class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
-        >
-          <i data-feather="home" class="mr-2 text-red"></i>
+        <a href="dashboard.html" class="active flex items-center">
+          <i data-feather="home" class="mr-2"></i>
           Dashboard
         </a>
       </div>
 
-      <!-- Management Section -->
       <div class="sidebar-menu mt-6">
-        <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">Management</h2>
-        <a
-          href="#"
-          class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg active"
-        >
-          <i data-feather="calendar" class="mr-2 text-red"></i>
+        <h2 class="text-neutral-500 uppercase font-bold text-sm mb-2">
+          Management
+        </h2>
+        <a href="#" class="flex items-center">
+          <i data-feather="calendar" class="mr-2"></i>
           Event
         </a>
-        <!-- Transaksi Menu with Collapsible Submenu -->
+        <!-- Collapsible Menu -->
         <div class="collapsible-menu">
           <a
             href="#"
-            class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
             onclick="toggleSubmenu(event, 'transaksiSubmenu')"
+            class="flex items-center"
           >
-            <i data-feather="clipboard" class="mr-2 text-red"></i>
+            <i data-feather="clipboard" class="mr-2"></i>
             Transaksi
             <i data-feather="chevron-down" class="ml-auto"></i>
-            <!-- Icon for collapse -->
           </a>
-          <div id="transaksiSubmenu" class="ml-6 hidden">
-            <a
-              href="#"
-              class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
-              >Laporan Penjualan</a
-            >
-            <a
-              href="#"
-              class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
-              >Penarikan Dana</a
-            >
-            <a
-              href="#"
-              class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
-              >Data Pemesan</a
-            >
-            <a
-              href="#"
-              class="block py-2 px-4 text-neutral-700 hover:bg-neutral-100 rounded-lg"
-              >Check-In</a
-            >
+          <div id="transaksiSubmenu" class="submenu">
+            <a href="#" class="block">Laporan Penjualan</a>
+            <a href="#" class="block">Penarikan Dana</a>
+            <a href="#" class="block">Data Pemesan</a>
+            <a href="#" class="block">Check-In</a>
           </div>
+        </div>
+      </div>
+
+      <!-- Logout -->
+      <div class="mt-auto">
+        <a href="#" class="flex items-center">
+          <i data-feather="log-out" class="mr-2"></i>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6 main-content">
+      <!-- Sidebar Toggle Button for Mobile -->
+      <button id="sidebarToggle" class="lg:hidden p-4 text-red-800">
+        <i data-feather="menu"></i>
+      </button>
+
+      <!-- Topbar -->
+      <div class="topbar flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">Event</h1>
+        <div class="dropdown relative">
+          <button class="flex items-center">
+            <i data-feather="user" class="mr-2"></i>
+            Account
+          </button>
+          <div class="dropdown-menu">
+            <a href="#" class="block px-4 py-2">Profile</a>
+            <a href="#" class="block px-4 py-2">Settings</a>
+            <a href="#" class="block px-4 py-2">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center text-neutral-600 text-sm mb-6">
+        <a href="#" class="text-red hover:underline">Dashboard</a>
+        <span class="mx-2">/</span>
+        <span>Event</span>
+      </nav>
+
+      <div class="flex justify-between items-center mb-6">
+        <div class="relative">
+          <button class="bg-red text-white px-4 py-2 rounded-lg">
+            Add Event
+          </button>
+        </div>
+        <!-- Search input -->
+        <div class="relative w-full max-w-xs">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="pl-10 pr-4 py-2 border rounded-lg w-full text-neutral-900 bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-red-600"
+          />
+          <div
+            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+          >
+            <i data-feather="search" class="text-neutral-400"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs for Event Aktif and Event Non-Aktif -->
+      <div class="tabs mb-6">
+        <div id="tabAktif" class="tab active" onclick="showTab('aktif')">
+          Event Aktif
+        </div>
+        <div id="tabNonAktif" class="tab" onclick="showTab('nonaktif')">
+          Event Non-Aktif
+        </div>
+      </div>
+
+      <!-- Event Aktif Content -->
+      <div id="contentAktif" class="tab-content">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3">Event Name</th>
+                <th class="px-6 py-3">Date</th>
+                <th class="px-6 py-3">Location</th>
+                <th class="px-6 py-3">Action</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4">Sample Event Aktif</td>
+                <td class="px-6 py-4">2024-09-01</td>
+                <td class="px-6 py-4">Location A</td>
+                <td class="px-6 py-4">
+                  <div class="flex space-x-2">
+                    <button
+                      class="border border-red text-red px-2 py-1 rounded-lg"
+                    >
+                      <i data-feather="eye"></i>
+                    </button>
+                    <button
+                      class="border border-red text-red px-2 py-1 rounded-lg"
+                    >
+                      <i data-feather="edit"></i>
+                    </button>
+                    <button
+                      class="border border-red text-red px-2 py-1 rounded-lg"
+                    >
+                      <i data-feather="toggle-right"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Event Non-Aktif Content (hidden by default) -->
+      <div id="contentNonAktif" class="tab-content hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3">Event Name</th>
+                <th class="px-6 py-3">Date</th>
+                <th class="px-6 py-3">Location</th>
+                <th class="px-6 py-3">Action</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4">Sample Event Non-Aktif</td>
+                <td class="px-6 py-4">2024-08-25</td>
+                <td class="px-6 py-4">Location B</td>
+                <td class="px-6 py-4">
+                  <div class="flex space-x-2">
+                    <button
+                      class="border border-red text-red px-2 py-1 rounded-lg"
+                    >
+                      <i data-feather="eye"></i>
+                    </button>
+                    <button
+                      class="border border-red text-red px-2 py-1 rounded-lg"
+                    >
+                      <i data-feather="edit"></i>
+                    </button>
+                    <button
+                      class="border border-red text-red px-2 py-1 rounded-lg"
+                    >
+                      <i data-feather="toggle-left"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <!-- Bottom Section (Logout) -->
-    <div>
-      <a
-        href="#"
-        class="flex items-center py-2 px-4 text-neutral-900 hover:bg-neutral-100 rounded-lg"
-      >
-        <i data-feather="log-out" class="mr-2 text-red"></i>
-        Logout
-      </a>
-    </div>
-  </aside>
+    <script>
+      feather.replace();
 
-  <!-- Main Content -->
-  <div class="flex-1 p-6 main-content">
-    <!-- Sidebar Toggle Button (Visible on small screens) -->
-    <button id="sidebarToggle" class="lg:hidden p-4 text-red-800">
-      <i data-feather="menu"></i>
-      <!-- Menu icon -->
-    </button>
+      // Sidebar toggle for mobile
+      const sidebar = document.querySelector(".sidebar");
+      document.getElementById("sidebarToggle").addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+      });
 
-  <!-- Main Content -->
-  <div class="flex-1 p-6">
-    <!-- Topbar -->
-    <div class="topbar flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-bold text-neutral-900">Event</h1>
-      <div class="relative dropdown">
-        <button class="flex items-center space-x-2 text-neutral-900">
-          <i data-feather="user" class="feather-icon"></i>
-          <span>Account</span>
-        </button>
-        <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
-          <a href="#" class="block px-4 py-2 text-neutral-900 hover:bg-gray-100">Profile</a>
-          <a href="#" class="block px-4 py-2 text-neutral-900 hover:bg-gray-100">Settings</a>
-          <a href="#" class="block px-4 py-2 text-neutral-900 hover:bg-gray-100">Logout</a>
-        </div>
-      </div>
-    </div>
+      // Submenu toggle
+      function toggleSubmenu(event, submenuId) {
+        event.preventDefault();
+        const submenu = document.getElementById(submenuId);
+        submenu.parentElement.classList.toggle("active");
+      }
 
-          <!-- Breadcrumbs -->
-          <nav class="flex items-center text-neutral-600 text-sm mb-6">
-            <a href="#" class="text-red hover:underline">Dashboard</a>
-            <span class="mx-2">/</span>
-            <span>Event</span>
-          </nav>
-      
+      // Tab toggle functionality
+      function showTab(tab) {
+        const tabAktif = document.getElementById("tabAktif");
+        const tabNonAktif = document.getElementById("tabNonAktif");
+        const contentAktif = document.getElementById("contentAktif");
+        const contentNonAktif = document.getElementById("contentNonAktif");
 
-          <div class="flex justify-between items-center mb-6">
-            <div class="relative">
-              <button class="bg-red text-white px-4 py-2 rounded-lg">Add Event</button>
-            </div>
-            <!-- Search input -->
-            <div class="relative w-full max-w-xs">
-                <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 border rounded-lg w-full text-neutral-900 bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-red-600" />
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <i data-feather="search" class="text-neutral-400"></i>
-                </div>
-              </div>
-          </div>
-
-          <div class="w-full">
-            <!-- Tabs -->
-            <div class="border-b border-gray-300">
-              <nav class="flex space-x-4">
-                <button id="tab-aktif" class="py-2 px-4 text-gray-600 border-b-2 border-red font-medium focus:outline-none">Event Aktif</button>
-                <button id="tab-tidak-aktif" class="py-2 px-4 text-gray-600 hover:border-b-2 hover:border-gray-300 focus:outline-none">Event Tidak Aktif</button>
-              </nav>
-            </div>
-          
-            <!-- Data Table for Event Aktif -->
-            <div id="event-aktif" class="overflow-x-auto mt-4">
-              <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Event Name</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                  <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">Sample Event Aktif</td>
-                    <td class="px-6 py-4 whitespace-nowrap">2024-09-01</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Location A</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <!-- View Button -->
-                        <button class="border border-red-600 text-red-600 hover:bg-red-50 px-2 py-1 rounded-lg flex items-center space-x-1">
-                          <i data-feather="eye" class="feather-icon w-4 h-4"></i>
-                          <span class="text-sm">View</span>
-                        </button>
-                    
-                        <!-- Edit Button -->
-                        <button class="border border-red-600 text-red-600 hover:bg-red-50 px-2 py-1 rounded-lg flex items-center space-x-1 ml-4">
-                          <i data-feather="edit" class="feather-icon w-4 h-4"></i>
-                          <span class="text-sm">Edit</span>
-                        </button>
-                    
-                        <!-- Toggle Button -->
-                        <button class="border border-red-600 text-red-600 hover:bg-red-50 px-2 py-1 rounded-lg flex items-center space-x-1 ml-4">
-                          <i data-feather="toggle-right" class="feather-icon w-4 h-4"></i>
-                          <span class="text-sm">Nonaktifkan</span>
-                        </button>
-                      </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          
-            <!-- Data Table for Event Tidak Aktif -->
-            <div id="event-tidak-aktif" class="overflow-x-auto mt-4 hidden">
-              <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Event Name</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                  <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">Sample Event Tidak Aktif</td>
-                    <td class="px-6 py-4 whitespace-nowrap">2023-08-15</td>
-                    <td class="px-6 py-4 whitespace-nowrap">Location B</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <button class="text-red hover:underline">Edit</button>
-                      <button class="text-red hover:underline ml-4">Delete</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          
-    </div>
-
-  <script>
-    feather.replace();
-
-    // Function to toggle submenu
-    function toggleSubmenu(event, submenuId) {
-      event.preventDefault();
-      const submenu = document.getElementById(submenuId);
-      submenu.classList.toggle('hidden');
-    }
-
-    // Sidebar toggle script
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebar = document.querySelector('.sidebar');
-    sidebarToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
-  </script>
-  <script>
-    const tabAktif = document.getElementById('tab-aktif');
-    const tabTidakAktif = document.getElementById('tab-tidak-aktif');
-    const eventAktif = document.getElementById('event-aktif');
-    const eventTidakAktif = document.getElementById('event-tidak-aktif');
-  
-    tabAktif.addEventListener('click', () => {
-      // Set active tab styling
-      tabAktif.classList.add('border-red-600');
-      tabTidakAktif.classList.remove('border-red-600');
-      
-      // Show Event Aktif and hide Event Tidak Aktif
-      eventAktif.classList.remove('hidden');
-      eventTidakAktif.classList.add('hidden');
-    });
-  
-    tabTidakAktif.addEventListener('click', () => {
-      // Set active tab styling
-      tabTidakAktif.classList.add('border-red-600');
-      tabAktif.classList.remove('border-red-600');
-      
-      // Show Event Tidak Aktif and hide Event Aktif
-      eventAktif.classList.add('hidden');
-      eventTidakAktif.classList.remove('hidden');
-    });
-  </script>
-</body>
+        if (tab === "aktif") {
+          tabAktif.classList.add("active");
+          tabNonAktif.classList.remove("active");
+          contentAktif.classList.remove("hidden");
+          contentNonAktif.classList.add("hidden");
+        } else {
+          tabAktif.classList.remove("active");
+          tabNonAktif.classList.add("active");
+          contentAktif.classList.add("hidden");
+          contentNonAktif.classList.remove("hidden");
+        }
+      }
+    </script>
+  </body>
 </html>
