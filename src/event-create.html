@@ -171,6 +171,32 @@
         background-color: #7a0d0e;
       }
 
+      /* Button Styles */
+      .remove-schedule {
+        display: flex;
+        align-items: center;
+        background: none; /* Remove background */
+        color: #94181c; /* Red color for text and icon */
+        border: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: color 0.3s ease; /* Change transition to color */
+      }
+
+      .remove-schedule i {
+        margin-right: 0.5rem;
+      }
+
+      .remove-schedule:hover {
+        color: #7a0d0e; /* Darker red for hover effect */
+      }
+
+      .remove-schedule.hidden {
+        display: none;
+      }
+
       /* Form Layout */
       .form-grid {
         display: grid;
@@ -325,6 +351,10 @@
                   placeholder="Lokasi"
                   required
                 />
+                <!-- Tombol Hapus hanya akan ditampilkan jika lebih dari satu baris jadwal -->
+                <button type="button" class="remove-schedule hidden">
+                  Hapus
+                </button>
               </div>
             </div>
             <button type="button" class="btn mb-4" onclick="addScheduleField()">
@@ -373,13 +403,156 @@
 
       <form id="form2" class="form-step">
         <h2 class="text-xl font-semibold mb-4">Talent & Fasilitas</h2>
-        <button type="button" class="btn" onclick="nextStep()">Next</button>
+
+        <div class="form-grid mb-4">
+          <!-- Kolom 1: Talent -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Talent</h3>
+
+            <!-- Talent Input -->
+            <div id="talentContainer">
+              <div class="talent-item mb-4">
+                <label for="talentName" class="block mb-2">Nama Talent:</label>
+                <input
+                  type="text"
+                  id="talentName"
+                  class="border p-2 rounded w-full mb-2"
+                  placeholder="Nama Talent"
+                  required
+                />
+
+                <label for="talentImage" class="block mb-2"
+                  >Gambar/Foto Talent:</label
+                >
+                <input
+                  type="file"
+                  id="talentImage"
+                  accept="image/*"
+                  class="border p-2 rounded w-full mb-2"
+                  required
+                />
+
+                <label for="instagramTalent" class="block mb-2"
+                  >Instagram Talent:</label
+                >
+                <input
+                  type="url"
+                  id="instagramTalent"
+                  class="border p-2 rounded w-full mb-4"
+                  placeholder="Link Instagram Talent"
+                />
+              </div>
+            </div>
+
+            <!-- Add Talent Button -->
+            <button
+              type="button"
+              class="btn text-red hover:bg-red-950"
+              onclick="addTalentField()"
+            >
+              + Tambah Talent Lainnya
+            </button>
+          </div>
+
+          <!-- Kolom 2: Fasilitas -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Fasilitas</h3>
+
+            <label class="block mb-2">Pilih Fasilitas:</label>
+            <div class="flex flex-wrap gap-4 mb-4">
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Toilet</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Food Court</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Medis</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Parkir Area</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Play Room</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Pusat Informasi</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Merchandise</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Charging Station</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="checkbox" class="form-checkbox" />
+                <span class="ml-2">Photobooth</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-between mt-6">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">
+            Kembali
+          </button>
+          <button type="submit" class="btn">Simpan</button>
+          <button type="button" class="btn" onclick="nextStep()">
+            Selanjutnya
+          </button>
+        </div>
       </form>
 
       <form id="form3" class="form-step">
         <h2 class="text-xl font-semibold mb-4">Informasi Tambahan</h2>
-        <button type="submit" class="btn">Submit</button>
+
+        <div class="mb-4">
+          <!-- Instagram Input -->
+          <label for="instagram" class="block mb-2">Instagram:</label>
+          <input
+            type="text"
+            id="instagram"
+            class="border p-2 rounded w-full"
+            placeholder="Link Instagram"
+          />
+        </div>
+
+        <div class="mb-4">
+          <!-- Legalitas File Upload -->
+          <label for="legalitas" class="block mb-2">Legalitas:</label>
+          <input
+            type="file"
+            id="legalitas"
+            class="border p-2 rounded w-full"
+            accept=".pdf,.doc,.docx"
+          />
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-between mt-6">
+          <button type="button" class="btn btn-outline" onclick="prevStep()">
+            Kembali
+          </button>
+          <button type="submit" class="btn">Simpan</button>
+        </div>
       </form>
+
+      <script>
+        function prevStep() {
+          // Logic to go to the previous step
+          currentStep--;
+          goToStep(currentStep);
+        }
+      </script>
     </div>
 
     <script>
@@ -432,23 +605,116 @@
         document.getElementById("form" + currentStep).classList.add("active");
         updateStepper();
       }
-      // Function to dynamically add more Tanggal, Waktu & Lokasi fields
       function addScheduleField() {
-        const container = document.getElementById("scheduleContainer");
-        const newSchedule = document.createElement("div");
-        newSchedule.className = "schedule-item grid grid-cols-2 gap-4 mb-4";
-        newSchedule.innerHTML = `
-          <input type="datetime-local" class="border p-2 rounded w-full" required />
-          <input type="text" class="border p-2 rounded w-full" placeholder="Lokasi" required />
-        `;
-        container.appendChild(newSchedule);
+        const scheduleContainer = document.getElementById("scheduleContainer");
+        const scheduleItems =
+          scheduleContainer.querySelectorAll(".schedule-item");
+        const newField = document.createElement("div");
+        newField.classList.add(
+          "schedule-item",
+          "grid",
+          "grid-cols-2",
+          "gap-4",
+          "mb-4"
+        );
+        newField.innerHTML = `
+        <input type="datetime-local" class="border p-2 rounded w-full" required />
+        <input type="text" class="border p-2 rounded w-full" placeholder="Lokasi" required />
+        <button type="button" class="remove-schedule"> Hapus</button>
+      `;
+        scheduleContainer.appendChild(newField);
+
+        // Update visibility of delete buttons
+        updateRemoveButtonVisibility();
       }
+
+      function removeScheduleField(event) {
+        if (event.target.classList.contains("remove-schedule")) {
+          event.target.closest(".schedule-item").remove();
+          // Update visibility of delete buttons
+          updateRemoveButtonVisibility();
+        }
+      }
+
+      function updateRemoveButtonVisibility() {
+        const scheduleItems = document.querySelectorAll(".schedule-item");
+        scheduleItems.forEach((item, index) => {
+          const removeButton = item.querySelector(".remove-schedule");
+          if (scheduleItems.length > 1) {
+            removeButton.classList.remove("hidden");
+          } else {
+            removeButton.classList.add("hidden");
+          }
+        });
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        feather.replace(); // Initialize Feather Icons
+      });
+
+      document
+        .getElementById("scheduleContainer")
+        .addEventListener("click", removeScheduleField);
 
       // Handle form submission (replace with your own logic)
       function handleSubmit(event) {
         event.preventDefault();
         // Form submission logic here (e.g., send data to the server)
         alert("Form submitted successfully!");
+      }
+
+      let talentCount = 1;
+
+      function addTalentField() {
+        const container = document.getElementById("talentContainer");
+        const newTalent = document.createElement("div");
+        newTalent.className = "talent-item mb-4";
+        newTalent.innerHTML = `
+        <label for="talentName${talentCount}" class="block mb-2">Nama Talent:</label>
+        <input
+            type="text"
+            id="talentName${talentCount}"
+            class="border p-2 rounded w-full mb-2"
+            placeholder="Nama Talent"
+            required
+        />
+        
+        <label for="talentImage${talentCount}" class="block mb-2">Gambar/Foto Talent:</label>
+        <input
+            type="file"
+            id="talentImage${talentCount}"
+            accept="image/*"
+            class="border p-2 rounded w-full mb-2"
+            required
+        />
+
+        <label for="instagramTalent${talentCount}" class="block mb-2">Instagram Talent:</label>
+        <input
+            type="url"
+            id="instagramTalent${talentCount}"
+            class="border p-2 rounded w-full mb-4"
+            placeholder="Link Instagram Talent"
+        />
+        
+        <button
+            type="button"
+            class="remove-talent text-red-600 hover:text-red-800"
+            onclick="removeTalentField(this)"
+        >
+            <i data-feather="trash-2" class="mr-2"></i> Hapus
+        </button>
+        `;
+        container.appendChild(newTalent);
+        talentCount++;
+      }
+
+      function removeTalentField(button) {
+        button.parentElement.remove();
+      }
+
+      function prevStep() {
+        // Logic to go to the previous step
+        currentStep--;
+        goToStep(currentStep);
       }
     </script>
   </body>
